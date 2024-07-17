@@ -4,6 +4,9 @@ from tensorflow.keras.datasets import imdb
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 import numpy as np
+import pathlib
+code_dir = pathlib.Path(__file__).parent.resolve()
+print(code_dir)
 
 start_char = 1
 oov_char = 2
@@ -18,8 +21,8 @@ index_word[start_char] = "[START]"
 index_word[oov_char] = "[OOV]"
 
 
-ann_model = load_model('./model/simple_ann_imdb.h5')
-rnn_model = load_model('./model/simple_rnn_imdb.h5')
+ann_model = load_model(str(code_dir) +'/model/simple_ann_imdb.h5')
+rnn_model = load_model(str(code_dir) + '/model/simple_rnn_imdb.h5')
 
 
 
@@ -46,15 +49,6 @@ def predict_with_rnn(review):
 
 
 def convert_range(value):
-    """
-    Convert a value from the range [0, 1] to the range [-1, 1].
-
-    Parameters:
-    value (float): A value in the range [0, 1].
-
-    Returns:
-    float: The corresponding value in the range [-1, 1].
-    """
     if value < 0 or value > 1:
         raise ValueError("Input value must be in the range [0, 1].")
     
