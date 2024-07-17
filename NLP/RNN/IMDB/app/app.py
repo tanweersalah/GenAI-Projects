@@ -11,7 +11,7 @@ print(code_dir)
 start_char = 1
 oov_char = 2
 index_from = 3
-vocab_size = 10000
+vocab_size = 88584
 max_len = 50
 
 word_index = imdb.get_word_index()
