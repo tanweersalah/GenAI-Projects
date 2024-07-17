@@ -11,7 +11,7 @@ print(code_dir)
 start_char = 1
 oov_char = 2
 index_from = 3
-vocab_size = 88584
+vocab_size = 20000
 max_len = 50
 
 word_index = imdb.get_word_index()
@@ -29,7 +29,8 @@ rnn_model = load_model(str(code_dir) + '/model/simple_rnn_imdb.h5')
 
 def preprocess_text(text):
     print(text)
-    encoded_text = [word_index.get(word, 2)+3  for word in text.lower().split(' ')]
+    encoded_text = [min(word_index.get(word, vocab_size) + 3, vocab_size - 1) for word in text.lower().split(' ')]
+
     return pad_sequences([encoded_text], maxlen= max_len)
 
 def predict_with_ann(review):
