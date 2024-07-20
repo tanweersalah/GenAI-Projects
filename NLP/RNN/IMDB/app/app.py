@@ -23,6 +23,7 @@ index_word[oov_char] = "[OOV]"
 
 ann_model = load_model(str(code_dir) +'/model/simple_ann_imdb.h5')
 rnn_model = load_model(str(code_dir) + '/model/simple_rnn_imdb.h5')
+lstm_model = load_model(str(code_dir) + '/model/simple_lstm_imdb.h5')
 
 
 
@@ -41,6 +42,11 @@ def predict_with_ann(review):
 
 def predict_with_rnn(review):
     prediction = rnn_model.predict(review)
+    sentiment = 'Positive' if prediction[0][0] > 0.5 else 'Negative'
+    return sentiment,  prediction[0][0]
+
+def predict_with_lstm(review):
+    prediction = lstm_model.predict(review)
     sentiment = 'Positive' if prediction[0][0] > 0.5 else 'Negative'
     return sentiment,  prediction[0][0]
 
@@ -132,6 +138,14 @@ if st.button('Predict'):
 
     rnn_sentiment,  rnn_prediction_score = predict_with_rnn(review)
     st.write('\nRNN Result:')
+    st.write('Sentiment : ', rnn_sentiment)
+
+    # Create and display the chart
+    fig_rnn = create_bidirectional_bar(rnn_prediction_score)
+    st.pyplot(fig_rnn)
+
+    rnn_sentiment,  rnn_prediction_score = predict_with_lstm(review)
+    st.write('\LSTM Result:')
     st.write('Sentiment : ', rnn_sentiment)
 
     # Create and display the chart
