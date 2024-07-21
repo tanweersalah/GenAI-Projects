@@ -56,9 +56,6 @@ def predict_with_lstm(review):
 
 
 def convert_range(value):
-    if value < 0 or value > 1:
-        raise ValueError("Input value must be in the range [0, 1].")
-    
     return value * 2 - 1
 
 def create_bidirectional_bar(value):
@@ -82,15 +79,15 @@ def create_bidirectional_bar(value):
     
     # Create the gradient bar
     if value >= 0:
-        gradient = np.linspace(0, value, int(n_bins * value))
+        gradient = np.linspace(0, value, int(n_bins * abs(value)))
         for i in range(len(gradient)-1):
             ax.barh(0, gradient[i+1]-gradient[i], left=gradient[i], height=0.6, 
-                    align='center', color=cmap(0.5 + (i+0.5)/(len(gradient)*2)), alpha=0.8)
+                    align='center', color=cmap(0.5 + (i+0.5)/n_bins), alpha=0.8)
     else:
         gradient = np.linspace(value, 0, int(n_bins * abs(value)))
         for i in range(len(gradient)-1):
             ax.barh(0, gradient[i+1]-gradient[i], left=gradient[i], height=0.6, 
-                    align='center', color=cmap(0.5 - (len(gradient)-i-0.5)/(len(gradient)*2)), alpha=0.8)
+                    align='center', color=cmap(0.5 - (len(gradient)-i-0.5)/n_bins), alpha=0.8)
     
     # Add value label
     ax.text(value, 0, f'{value:.2f}', 
@@ -110,9 +107,6 @@ def create_bidirectional_bar(value):
     plt.title('Sentiment Bar Chart', fontsize=16, fontweight='bold', color='#333333')
     plt.tight_layout()
     return fig
-
-    
-
 
 # streamlit ap
 import streamlit as st
@@ -145,7 +139,7 @@ if st.button('Predict'):
     st.pyplot(fig_rnn)
 
     rnn_sentiment,  rnn_prediction_score = predict_with_lstm(review)
-    st.write('\LSTM Result:')
+    st.write('LSTM Result:')
     st.write('Sentiment : ', rnn_sentiment)
 
     # Create and display the chart
