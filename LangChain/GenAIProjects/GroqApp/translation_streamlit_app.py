@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 import streamlit as st
 from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
