@@ -74,8 +74,8 @@ def main():
     text_to_translate = st.text_area("Text", height=150)
     
     st.subheader("Select Source and Target Languages")
-    source_language = st.selectbox("Source Language", ["English", "Spanish", "French", "German", "Chinese", "Japanese"])
-    target_language = st.selectbox("Target Language", ["German", "Spanish", "French", "English", "Chinese", "Japanese"])
+    source_language = st.selectbox("Source Language", ["English", "Spanish", "French", "German", "Chinese", "Japanese","Hindi", "Urdu"])
+    target_language = st.selectbox("Target Language", ["German","Hindi", "Urdu", "Spanish", "French", "English", "Chinese", "Japanese"])
     
     if st.button("Translate"):
         translated_text = translate_text(text_to_translate, source_language, target_language)
