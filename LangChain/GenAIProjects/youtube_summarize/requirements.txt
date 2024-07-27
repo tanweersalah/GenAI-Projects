@@ -3,5 +3,5 @@ langchain-community
 langchain_groq
 streamlit
 python-dotenv
-fastapi
-langserve
+validators
+youtube_transcript_api
