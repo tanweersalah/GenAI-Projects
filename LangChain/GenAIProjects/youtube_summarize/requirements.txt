@@ -5,3 +5,4 @@ streamlit
 python-dotenv
 validators
 youtube_transcript_api
+bs4
