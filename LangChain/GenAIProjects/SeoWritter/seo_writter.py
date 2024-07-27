@@ -54,10 +54,10 @@ llm = ChatGroq(groq_api_key=groq_api_key, model="Gemma-7b-It")
 
 # Streamlit app UI
 def app_ui():
-    st.title("Yotube Video / Webpage Summarizer APP")
+    st.title("Seo Writter")
     
     
-    st.subheader("Enter URL to summarize")
+    st.subheader("Enter URL to generated SEO Optimized post")
     url = st.text_input("Enter URL")
     
     
