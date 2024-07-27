@@ -36,13 +36,13 @@ def document_splitter(document , chunk_size = 5000, chunk_overlap = 200):
     return splitter.split_documents(document)
 
 
-groq_api_key = os.getenv("GROQ_API_KEY")
+#groq_api_key = os.getenv("GROQ_API_KEY")
 
 
 
-#groq_api_key = st.secrets["GROQ_API_KEY"]
-#os.environ['LANGCHAIN_API_KEY'] = st.secrets["LANGCHAIN_API_KEY"]
-#os.environ['LANGCHAIN_PROJECT'] = st.secrets["LANGCHAIN_PROJECT"]
+groq_api_key = st.secrets["GROQ_API_KEY"]
+os.environ['LANGCHAIN_API_KEY'] = st.secrets["LANGCHAIN_API_KEY"]
+os.environ['LANGCHAIN_PROJECT'] = st.secrets["LANGCHAIN_PROJECT"]
 os.environ['LANGCHAIN_TRACING_V2'] = "true"
 
 llm = ChatGroq(groq_api_key=groq_api_key, model="Gemma-7b-It")
