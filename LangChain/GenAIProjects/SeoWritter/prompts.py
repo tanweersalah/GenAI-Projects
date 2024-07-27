@@ -23,7 +23,7 @@ def get_seo_chat_message(final_summary,  title ):
      End of Text 
 Follow these instructions:
 Article title : {title}
-1. Include different headings.
+1. Include different headings #, ## , ###, ####.
 3. Insert relevant external links to reputable sources throughout the content. Use at least 5 different sources.
 4. Include the target keyword naturally in the first and last sentences of the article.
 6. Humanize the output:
