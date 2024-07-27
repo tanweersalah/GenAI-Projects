@@ -44,7 +44,7 @@ os.environ['LANGCHAIN_API_KEY'] = st.secrets["LANGCHAIN_API_KEY"]
 os.environ['LANGCHAIN_PROJECT'] = st.secrets["LANGCHAIN_PROJECT"]
 os.environ['LANGCHAIN_TRACING_V2'] = "true"
 
-llm = ChatGroq(groq_api_key=groq_api, model="Gemma-7b-It")
+llm = ChatGroq(groq_api_key=groq_api_key, model="Gemma-7b-It")
 
 template = """
 Please provide the summary of this text : 
