@@ -7,7 +7,7 @@ def get_format_msg(content):
     SystemMessage(content="You're an Text Converter"),
     HumanMessage(content=f"""
     
-format the following markdown text into html , with html tags. Remove all eol , escape , newline characters ,  * , ** ,  \ and / characters :
+format the following text into html , with html tags. Remove all eol , escape , newline characters ,  * , ** ,  \ and / characters :
                  
 
                  Text :  {content}

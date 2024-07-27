@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 load_dotenv()
+import markdown
 import validators
 from langchain_groq import ChatGroq
 from langchain.chains.summarize import load_summarize_chain
@@ -36,13 +37,13 @@ def document_splitter(document , chunk_size = 5000, chunk_overlap = 200):
     return splitter.split_documents(document)
 
 
-#groq_api_key = os.getenv("GROQ_API_KEY")
+groq_api_key = os.getenv("GROQ_API_KEY")
 
 
 
-groq_api_key = st.secrets["GROQ_API_KEY"]
-os.environ['LANGCHAIN_API_KEY'] = st.secrets["LANGCHAIN_API_KEY"]
-os.environ['LANGCHAIN_PROJECT'] = st.secrets["LANGCHAIN_PROJECT"]
+# groq_api_key = st.secrets["GROQ_API_KEY"]
+# os.environ['LANGCHAIN_API_KEY'] = st.secrets["LANGCHAIN_API_KEY"]
+# os.environ['LANGCHAIN_PROJECT'] = st.secrets["LANGCHAIN_PROJECT"]
 os.environ['LANGCHAIN_TRACING_V2'] = "true"
 
 llm = ChatGroq(groq_api_key=groq_api_key, model="Gemma-7b-It")
@@ -78,10 +79,10 @@ def app_ui():
             output = llm(prompts.get_seo_chat_message(final_summary, document[0].metadata['title']))
             st.success("Post Generated")
         with st.spinner('Formating New Post...'):
+            formatted_output = markdown.markdown(output.content)
+
+            formatted_output = llm(prompts.get_format_msg(formatted_output) )
             
-            formatted_output = llm(prompts.get_format_msg(output.content) )
-            formatted_output.content.replace("\n", "")
-            formatted_output.content.replace("**", "")
             st.success(formatted_output.content)
 
         
