@@ -81,6 +81,7 @@ def app_ui():
             
             formatted_output = llm(prompts.get_format_msg(output.content) )
             formatted_output.content.replace("\n", "")
+            formatted_output.content.replace("**", "")
             st.success(formatted_output.content)
 
         
