@@ -75,8 +75,8 @@ def app_ui():
 
         with st.spinner('Generating New Post...'):
             
-            
-            output = llm(prompts.get_seo_chat_message(final_summary, document[0].metadata['title']))
+            title = document[0].metadata.get('title', "")
+            output = llm(prompts.get_seo_chat_message(final_summary,title ))
             st.success("Post Generated")
         with st.spinner('Formating New Post...'):
             formatted_output = markdown.markdown(output.content)
