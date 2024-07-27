@@ -12,3 +12,13 @@ faiss-cpu
 langchain_chroma
 langchain_groq
 streamlit
+fastapi
+langserve
+sse_starlette
+pydantic==1.10.13
+arxiv
+wikipedia
+langchainhub
+validators
+youtube_transcript_api
+unstructured
