@@ -54,10 +54,10 @@ llm = ChatGroq(groq_api_key=groq_api_key, model="Gemma-7b-It")
 
 # Streamlit app UI
 def app_ui():
-    st.title("Seo Writter")
+    st.title("TanSeo Writter")
     
     
-    st.subheader("Enter URL to generated SEO Optimized post")
+    st.subheader("Enter URL to generate SEO Optimized post")
     url = st.text_input("Enter URL")
     
     
