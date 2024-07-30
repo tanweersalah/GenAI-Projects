@@ -47,7 +47,8 @@ def process_pdf(uploaded_file):
 def init():
     st.title("PDF RAG QnA APP")
     os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
-    os.environ["ASTRA_DB_APPLICATION_TOKEN"] = st.secrets["ASTRA_DB_ID"]
+    os.environ["ASTRA_DB_APPLICATION_TOKEN"] = st.secrets["ASTRA_DB_APPLICATION_TOKEN"]
+    os.environ["ASTRA_DB_ID"] = st.secrets["ASTRA_DB_ID"]
     os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
     os.environ["LANGCHAIN_PROJECT"] = "RAG PDF QnA"
     os.environ['LANGCHAIN_API_KEY'] = st.secrets["LANGCHAIN_API_KEY"] 
