@@ -14,7 +14,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-
+##
 
 def truncate_db(table_name):
     s = cassio.config.resolve_session()

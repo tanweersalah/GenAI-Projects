@@ -22,3 +22,4 @@ langchainhub
 validators
 youtube_transcript_api
 unstructured
+duckduckgo-search
